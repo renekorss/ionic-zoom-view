@@ -14,14 +14,17 @@
                 $compile(elem)(scope);
 
                 const zoomViewTemplate = `
-                    <ion-modal-view>
+                    <style>
+                        .zoom-view .scroll { height:100%; }
+                    </style>
+                    <ion-modal-view class="zoom-view">
                         <ion-header-bar>
                             <h1 class="title"></h1>
                             <button ng-click="closeZoomView()" class="button button-clear button-positive">Done</button>
                         </ion-header-bar>
-                        <ion-content class="s-login-changelogContent">
-                            <ion-scroll zooming="true" direction="xy" style="width: 100%; height: 500px;">
-                                <div style="width: 500px; height: 500px; background: url('{{ngSrc}}') no-repeat"></div>
+                        <ion-content>
+                            <ion-scroll zooming="true" direction="xy" style="width: 100%; height: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; ">
+                                <img ng-src="{{ngSrc}}" style="width: 100%!important; display:block;   width: 100%; height: auto; max-width: 400px; max-height: 700px; margin: auto; padding: 10px; "></img>
                             </ion-scroll>
                         </ion-content>
                     </ion-modal-view>
