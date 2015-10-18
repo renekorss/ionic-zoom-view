@@ -33,5 +33,5 @@
             } };
     };
 
-    angular.module("ion-zoom-view", []).directive("zoomView", zoomView);
+    angular.module("ionic-zoom-view", []).directive("zoomView", zoomView);
 })();
