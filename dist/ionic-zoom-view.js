@@ -2,36 +2,38 @@
 
 (function () {
 
-    "use strict";
+  "use strict";
 
-    var zoomView = function ($compile, $ionicModal) {
-        return {
+  var zoomView = function ($compile, $ionicModal, $ionicPlatform) {
+    return {
 
-            restrict: "A",
+      restrict: "A",
 
-            link: function link(scope, elem, attr) {
+      link: function link(scope, elem, attr) {
 
-                elem.attr("ng-click", "showZoomView()");
-                elem.removeAttr("zoom-view");
-                $compile(elem)(scope);
+        $ionicPlatform.ready(function () {
 
-                var zoomViewTemplate = "\n                    <style>\n                        .zoom-view .scroll { height:100%; }\n                    </style>\n                    <ion-modal-view class=\"zoom-view\">\n                        <ion-header-bar>\n                            <h1 class=\"title\"></h1>\n                            <button ng-click=\"closeZoomView()\" class=\"button button-clear button-positive\">Done</button>\n                        </ion-header-bar>\n                        <ion-content>\n                            <ion-scroll zooming=\"true\" direction=\"xy\" style=\"width: 100%; height: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; \">\n                                <img ng-src=\"{{ngSrc}}\" style=\"width: 100%!important; display:block;   width: 100%; height: auto; max-width: 400px; max-height: 700px; margin: auto; padding: 10px; \"></img>\n                            </ion-scroll>\n                        </ion-content>\n                    </ion-modal-view>\n                ";
+          elem.attr("ng-click", "showZoomView()");
+          elem.removeAttr("zoom-view");
+          $compile(elem)(scope);
 
-                scope.zoomViewModal = $ionicModal.fromTemplate(zoomViewTemplate, {
-                    scope: scope,
-                    animation: "slide-in-up"
-                });
+          var zoomViewTemplate = "\n          <style>\n          .zoom-view .scroll { height:100%; }\n          </style>\n          <ion-modal-view class=\"zoom-view\">\n          <ion-header-bar>\n          <h1 class=\"title\"></h1>\n          <button ng-click=\"closeZoomView()\" class=\"button button-clear button-dark\">Done</button>\n          </ion-header-bar>\n          <ion-content>\n          <ion-scroll zooming=\"true\" direction=\"xy\" style=\"width: 100%; height: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; \">\n          <img ng-src=\"{{ngSrc}}\" style=\"width: 100%!important; display:block;   width: 100%; height: auto; max-width: 400px; max-height: 700px; margin: auto; padding: 10px; \"></img>\n          </ion-scroll>\n          </ion-content>\n          </ion-modal-view>\n          ";
 
-                scope.showZoomView = function () {
-                    scope.zoomViewModal.show();
-                    scope.ngSrc = attr.ngSrc;
-                };
+          scope.zoomViewModal = $ionicModal.fromTemplate(zoomViewTemplate, {
+            scope: scope,
+            animation: "slide-in-up" });
 
-                scope.closeZoomView = function () {
-                    scope.zoomViewModal.hide();
-                };
-            } };
-    };
+          scope.showZoomView = function () {
+            scope.zoomViewModal.show();
+            scope.ngSrc = attr.zoomSrc;
+          };
 
-    angular.module("ionic-zoom-view", []).directive("zoomView", zoomView);
+          scope.closeZoomView = function () {
+            scope.zoomViewModal.hide();
+          };
+        });
+      } };
+  };
+
+  angular.module("ionic-zoom-view", []).directive("zoomView", zoomView);
 })();
