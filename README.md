@@ -10,7 +10,7 @@ Require ionic-zoom-view
 
 ```js
 angular.module('myApp', [
-    'ionic-zoom-view',
+  'ionic-zoom-view',
 ]);
 ```
 
