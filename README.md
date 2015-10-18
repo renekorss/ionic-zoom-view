@@ -14,7 +14,7 @@ angular.module('myApp', [
 ]);
 ```
 
-Add the ```ionic-zoom-view``` directive to your ```<img>``` element:
+Add the ```zoom-view``` directive to your ```<img>``` element:
 
 ```html
 <img ng-src='...' zoom-src="..." zoom-view />
