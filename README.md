@@ -14,10 +14,10 @@ angular.module('myApp', [
 ]);
 ```
 
-Add the ```ionic-zoom-view``` directive to your ```<img>``` element:
+Add the ```zoom-view``` directive to your ```<img>``` element:
 
 ```html
-<img src='...' ionic-zoom-view />
+<img ng-src='...' zoom-src="..." zoom-view />
 ```
 
 ## License
