@@ -17,7 +17,7 @@ angular.module('myApp', [
 Add the ```zoom-view``` directive to your ```<img>``` element:
 
 ```html
-<img ng-src='...' zoom-src="..." zoom-view />
+<img ng-src='...' zoom-src="..." zoom-done-button-text="..." zoom-view />
 ```
 
 ## License
