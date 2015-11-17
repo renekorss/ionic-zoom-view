@@ -24,12 +24,14 @@
             animation: "slide-in-up" });
 
           scope.showZoomView = function () {
+            scope.$emit("zoom-view-opened");
             scope.zoomViewModal.show();
             scope.ngSrc = attr.zoomSrc;
             scope.doneButtonText = attr.zoomDoneButtonText ? attr.zoomDoneButtonText : "Done";
           };
 
           scope.closeZoomView = function () {
+            scope.$emit("zoom-view-closed");
             scope.zoomViewModal.hide();
           };
         });
